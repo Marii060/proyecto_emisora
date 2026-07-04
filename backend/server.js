@@ -26,3 +26,10 @@ db.connect((err) => {
 app.listen(3001, () => {
     console.log("Servidor backend corriendo en el puerto 3001");
 });
+
+app.get('/avisos', (req, res) => {
+    db.query('SELECT * FROM noticias', (err, result) => {
+        if (err) res.status(500).send(err);
+        else res.send(result);
+    });
+});
