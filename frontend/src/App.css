@@ -1,20 +1,70 @@
 /* Estructura general */
-body { margin: 0; font-family: 'Arial', sans-serif; background: #f9f9f9; }
+body { margin: 0; font-family: 'Garomond', serif; background: #f9f9f9; }
 
-.container { display: flex; flex-direction: column; min-height: 100vh; }
-
-/* Header profesional */
-.header-emisora { position: relative; width: 100%; text-align: center; }
-
-.banner-img {
-  width: 100%;
-  height: auto; /* Esto permite que la altura se ajuste proporcionalmente */
-  max-height: 150px; /* Puedes ajustar este número para que sea más bajo */
-  object-fit: contain; /* Esto asegura que NO se recorte, se verá completa */
-  background-color: #2c7186; /* Un color de fondo por si queda espacio vacío a los lados */
+/* --- Login Profesional con Degradado --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #5bbfdd, #3e6364);
 }
 
-/* Logo sobre el banner */
+.login-box {
+  background: white;
+  padding: 70px; 
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 320px; 
+}
+
+.login-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.login-box input {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2c7186; /* Color inicial */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+/* Este es el estado cuando pasas el mouse por encima */
+.login-box button:hover {
+  background-color: #62e9d2; 
+  transform: scale(1.02);    
+}
+
+/* --- Estructura de la Emisora --- */
+.container { display: flex; flex-direction: column; min-height: 100vh; }
+
+.header-emisora { position: relative; width: 100%; text-align: center; margin-bottom: 60px; }
+
+.banner-img { 
+  width: 100%; height: auto; max-height: 200px; 
+  object-fit: contain; background-color: #2c7186; 
+}
+
 .logo-overlay { position: absolute; bottom: -50px; left: 50px; }
 
 .logo-img { 
@@ -23,10 +73,36 @@ body { margin: 0; font-family: 'Arial', sans-serif; background: #f9f9f9; }
     box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
 }
 
-/* Contenido */
-.content { margin-top: 2px; padding: 20px; text-align: center; }
+.content { padding: 20px; text-align: center; }
 
-.hero h1 { color: #004d40; }
+.hero h1 { color: #004d40; margin-top: 20px; }
 
-/* Footer */
 .footer { margin-top: auto; padding: 20px; background: #333; color: white; text-align: center; }
+
+/* Avisos */
+.avisos-section { margin-top: 30px; padding: 20px; }
+.avisos-lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.aviso-card { 
+    background: white; padding: 20px; border-radius: 10px; 
+    border-left: 5px solid #2c7186;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px; text-align: left; 
+}
+
+.logout-btn {
+  position: absolute;
+  top: 10px; /* Distancia desde arriba */
+  right: 10px; /* Distancia desde la izquierda */
+  background-color: rgba(14, 152, 177, 0.2); /* Fondo semitransparente */
+  color: white;
+  border: 1px solid white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 10; /* Asegura que el botón esté por encima de la imagen */
+  transition: background 0.9s;
+}
+
+.logout-btn:hover {
+  background-color: rgba(89, 228, 193, 0.6); 
+}

@@ -33,3 +33,17 @@ app.get('/avisos', (req, res) => {
         else res.send(result);
     });
 });
+
+app.post('/login', (req, res) => {
+    const { usuario, password } = req.body;
+    const sql = "SELECT * FROM usuarios WHERE usuario = ? AND password = ?";
+    
+    db.query(sql, [usuario, password], (err, result) => {
+        if (err) return res.status(500).send(err);
+        if (result.length > 0) {
+            res.send({ loggedIn: true, message: "Bienvenido" });
+        } else {
+            res.send({ loggedIn: false, message: "Usuario o contraseña incorrectos" });
+        }
+    });
+});
