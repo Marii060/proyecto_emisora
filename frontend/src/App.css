@@ -1,5 +1,20 @@
 /* Estructura general */
-body { margin: 0; font-family: 'Garomond', serif; background: #f9f9f9; }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #adbfe0, #9fc2fd, #6dd5fa);
+  background-size: 400% 400%; /* Esto es lo que permite que el fondo sea más grande y se mueva */
+  animation: gradientAnimation 15s ease infinite; /* La animación dura 15 segundos y nunca para */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* La clave de la magia: definimos cómo se mueve el degradado */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* --- Login Profesional con Degradado --- */
 .login-container {
@@ -56,26 +71,60 @@ body { margin: 0; font-family: 'Garomond', serif; background: #f9f9f9; }
 }
 
 /* --- Estructura de la Emisora --- */
-.container { display: flex; flex-direction: column; min-height: 100vh; }
-
-.header-emisora { position: relative; width: 100%; text-align: center; margin-bottom: 60px; }
-
-.banner-img { 
-  width: 100%; height: auto; max-height: 200px; 
-  object-fit: contain; background-color: #2c7186; 
+.header-emisora {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 200px; /* Aumentamos la altura para que el banner quepa mejor */
+  background-color: #498ca7d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.logo-overlay { position: absolute; bottom: -50px; left: 50px; }
+.banner-img {
+  max-height: 100%; /* La imagen no superará la altura del header */
+  width: auto;      /* Mantiene la proporción original */
+  object-fit: contain; /* Esto asegura que NADA de la imagen se corte */
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
 
-.logo-img { 
-    width: 120px; height: 120px; border-radius: 50%; 
-    border: 4px solid white; background: white; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+.logo-overlay {
+  position: absolute;
+  left: 30px;
+  top: 130px; /* Ajustamos la posición para que el logo se vea bien con el header más alto */
+  z-index: 1001;
+}
+
+.logo-img {
+  width: 120px; /* Tamaño del logo redondo */
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logout-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1002;
 }
 
 .content { padding: 20px; text-align: center; }
 
 .hero h1 { color: #004d40; margin-top: 20px; }
+.hero p {
+  animation: fadeIn 3s ease-in;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 .footer { margin-top: auto; padding: 20px; background: #333; color: white; text-align: center; }
 
@@ -105,4 +154,82 @@ body { margin: 0; font-family: 'Garomond', serif; background: #f9f9f9; }
 
 .logout-btn:hover {
   background-color: rgba(89, 228, 193, 0.6); 
+}
+.live-radio {
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 600px; /* Esto hace que no se estire demasiado */
+}
+
+.radio-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Esto mantiene la proporción 16:9 de video */
+  height: 0;
+  overflow: hidden;
+}
+
+.radio-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.form-noticias {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  margin: 30px auto;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+  border: 1px solid #e1e8ed;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-noticias h2 {
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-noticias input, 
+.form-noticias textarea, 
+.form-noticias select {
+  padding: 12px;
+  border: 2px solid #edf2f7;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease; /* Transición suave al hacer clic */
+}
+
+.form-noticias input:focus, 
+.form-noticias textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-noticias button {
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-noticias button:hover {
+  background: #2980b9; /* Oscurece el botón al pasar el mouse */
 }
